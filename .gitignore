@@ -1,0 +1,11 @@
+.DS_Store
+.idea/
+.vscode
+
+config.*.toml
+logs/
+dist/
+go.sum
+discuzx-xiuno*
+
+files/

@@ -5,10 +5,11 @@ import (
 	"discuzx-xiuno/app/libraries/database"
 	"flag"
 	"fmt"
+	"time"
+
 	"github.com/gogf/gf/os/gcfg"
 	"github.com/skiy/gfutils/lcfg"
 	"github.com/skiy/gfutils/llog"
-	"time"
 )
 
 var (
@@ -55,8 +56,8 @@ func main() {
 :::
 ::: Discuz!X 3.x 转 XiunoBBS 4.x 工具
 :::
-::: 作者: Skiychan <dev@skiy.net> https://www.skiy.net
-::: 本项目讨论帖：https://bbs.jadehive.com/thread-8059.htm
+::: 作者: Jetsung <jetsungchan@gmail.com> https://forum.idev.top
+::: 本项目讨论帖：https://forum.idev.top/d/4
 :::
 ::: 执行过程中按 "Ctrl + Z" 结束本程序...
 :::
@@ -80,8 +81,8 @@ func main() {
 
 	fmt.Printf(`
 :::
-::: 本项目开源地址: https://github.com/skiy/discuzx-xiuno
-::: 技术支持论坛: https://bbs.jadehive.com
+::: 本项目开源地址: https://github.com/xiulab/dxtoxn
+::: 技术支持论坛: https://forum.idev.top
 ::: 如需技术支持请加 QQ 群: 891844359
 :::
 ::: 如有意见和建议或者遇到 BUG，请到 GitHub 提 issue 。

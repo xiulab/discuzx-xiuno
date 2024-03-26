@@ -5,7 +5,6 @@
 config.*.toml
 logs/
 dist/
-go.sum
 discuzx-xiuno*
 
 files/

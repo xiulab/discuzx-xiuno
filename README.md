@@ -1,34 +1,40 @@
 ### Discuz!X To XiunoBBS
-------
-基于 ```Go``` 语言的 ```discuz!x 3.x To xiunobbs 4.x``` 转换工具
+
+---
+
+基于 `Go` 语言的 `Discuz!X 3.x To XiunoBBS 4.x` 转换工具
 
 ### 开发进度
+
 - 基础构架 ✔
 - 数据转换 ✔
 - 附件迁移 ✔
 - 数据优化 ✔
 
 ### 编译指南
-- 拉取主项目 ```git clone https://github.com/xiulab/discuzx-xiuno.git``` 
-- 进入项目目录, 执行 ```go get```
-- 编译程序 ```go build```
-- 完成，文件在 ```当前目录(go build)``` 下
-- 修改配置文件信息 ```config.toml```
+
+- 拉取主项目 `git clone https://github.com/xiulab/discuzx-xiuno.git`
+- 进入项目目录, 执行 `go get`
+- 编译程序 `go build`
+- 完成，文件在 `当前目录(go build)` 下
+- 修改配置文件信息 `config.toml`
 
 **温馨提示:**
-> 如果已配置好``GOBIN``或者将 ``$GOPATH/bin`` 环境变量，   
-即可以在任何目录下执行 **``discuzx-xiuno``** 启动本程序。   
-程序必须有**可执行权限**。   
 
-**工具使用教程**
+> 如果已配置好`GOBIN`或者将 `$GOPATH/bin` 环境变量，即可以在任何目录下执行 **`discuzx-xiuno`** 启动本程序。  
+> 程序必须有**可执行权限**。
+
+### 工具使用教程
+
 - **操作前, 请仔细查阅 config.toml 配置文件**
-- 先建一个 xiuno4 论坛。
-- 下载本程序（选择运行平台），Linux、MacOS 需要可执行权限。
-- 配置```confit.toml```, 执行本程序 ```./discuzx-xiuno```(Windows 平台下, 建议使用 ```powershell```控制台, 执行```discuzx-xiuno.exe```)
-- 登录后台，记得更新缓存统计。
+- 先建一个 `XiunoBBS 4.x` 论坛。
+- 下载源码编译的二进制程序（或自行按上述步骤编译）。非 Windows 平台需要可执行权限。
+- 配置`confit.toml`, 执行本程序 `./discuzx-xiuno`（Windows 平台, 建议使用 `PowerShell`控制台, 执行`discuzx-xiuno.exe`）
+- 登录后台，**记得**更新缓存统计。
 
 ### 配置文件说明
->请认真查阅配置文件的注释，主要修改 database (数据库)、tables.xiuno.user (用户表) 及 extension.file (附件迁移) 这几部分。 
+
+> 请认真查阅配置文件的注释，主要修改 database (数据库)、tables.xiuno.user (用户表) 及 extension.file (附件迁移) 这几部分。
 
 <details>
 <summary>配置文件内容</summary>
@@ -213,16 +219,12 @@
         thread_attach_total = true
 
 ```
+
 </details>
 
 ### 使用到的开源项目
-- XiunoBBS https://bbs.xiuno.com
-- Discuz!X http://www.discuz.net
--
 
+- **XiunoBBS**
+- **Discuz!X**
 - https://github.com/gogf/gf (基础框架)
 - https://github.com/frustra/bbcode (内容 BBCODE 转 HTML)
-
-
-### 开源协议
-MIT

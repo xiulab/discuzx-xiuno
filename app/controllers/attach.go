@@ -4,13 +4,14 @@ import (
 	"database/sql"
 	"discuzx-xiuno/app/libraries/database"
 	"fmt"
+	"path"
+	"strings"
+	"time"
+
 	"github.com/gogf/gf/database/gdb"
 	"github.com/gogf/gf/util/gconv"
 	"github.com/skiy/gfutils/lcfg"
 	"github.com/skiy/gfutils/llog"
-	"path"
-	"strings"
-	"time"
 )
 
 // Attach 附件
@@ -66,6 +67,11 @@ func (t *Attach) ToConvert() (err error) {
 			isimage := gconv.Int(u["isimage"])
 			if isimage != 1 {
 				isimage = 0
+			}
+
+			// 根据扩展名判断是否为图片
+			if filetype == "image" {
+				isimage = 1
 			}
 
 			d := gdb.Map{

@@ -6,11 +6,12 @@ import (
 	"discuzx-xiuno/app/libraries/lstr"
 	"errors"
 	"fmt"
+	"strings"
+	"time"
+
 	"github.com/skiy/gfutils/lcfg"
 	"github.com/skiy/gfutils/lfile"
 	"github.com/skiy/gfutils/llog"
-	"strings"
-	"time"
 
 	"github.com/gogf/gf/database/gdb"
 	"github.com/gogf/gf/frame/g"
@@ -178,7 +179,7 @@ func (t *File) avatarImages() (err error) {
 		xnAvatarFilePath := fmt.Sprintf("%s%s.png", avatarImagesPath, uid)
 
 		if err = gfile.Mkdir(avatarImagesPath); err != nil {
-			err = fmt.Errorf("头像保存目录 (%s) 创建失败, %s", avatarImagesPath, err.Error())
+			err = fmt.Errorf("头像保存目录 (%s) 创建失败, %s", avatarImagesPath, err)
 			return
 		}
 
@@ -189,13 +190,13 @@ func (t *File) avatarImages() (err error) {
 		dxAvatarImagePath := fmt.Sprintf("%s/%s/%s/%s/%s_avatar_big.jpg", dxAvatarPath, dir1, dir2, dir3, dir4)
 
 		if !gfile.IsFile(dxAvatarImagePath) {
-			err = fmt.Errorf("用户 UID (%s) 头像不存在: %s ", uid, dxAvatarImagePath)
-			return
+			fmt.Printf("用户 UID (%s) 头像不存在: %s ", uid, dxAvatarImagePath)
+			continue
 		}
 
-		if err = lfile.CopyFile(dxAvatarImagePath, xnAvatarFilePath); err != nil {
-			err = fmt.Errorf("\n迁移用户 (%s) 的头像 (%s) \n至 (%s) 失败, \n原因: %s", uid, dxAvatarImagePath, xnAvatarFilePath, err.Error())
-			return
+		if err := lfile.CopyFile(dxAvatarImagePath, xnAvatarFilePath); err != nil {
+			fmt.Printf("\n迁移用户 (%s) 的头像 (%s) \n至 (%s) 失败, \n原因: %s", uid, dxAvatarImagePath, xnAvatarFilePath, err)
+			continue
 		}
 
 		d := g.Map{
@@ -208,7 +209,8 @@ func (t *File) avatarImages() (err error) {
 
 		res, err := xiunoDB.Table(xiunoTable).Data(d).Where(w).Update()
 		if err != nil {
-			return fmt.Errorf("表 %s 用户头像, , %s", xiunoTable, err.Error())
+			fmt.Printf("表 %s 用户头像, , %s", xiunoTable, err)
+			continue
 		}
 
 		c, _ := res.RowsAffected()
